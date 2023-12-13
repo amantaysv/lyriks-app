@@ -7,6 +7,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@hooks': '/src/hooks',
+      '@assets': '/src/assets',
+      '@components': '/src/components',
+      '@redux': '/src/redux',
     },
   },
 })

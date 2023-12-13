@@ -21,7 +21,11 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
     "paths": {
-      "@hooks": ["hooks"]
+      "@hooks": ["hooks"],
+      "@assets": ["assets"],
+      "@components": ["components"],
+      "@redux/*": ["redux/*"],
+      "@redux": ["redux"]
     }
   },
   "include": ["src"],
