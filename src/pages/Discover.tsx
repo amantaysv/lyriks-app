@@ -1,10 +1,7 @@
 import { genres } from '@assets'
 import { Error, Loader, SongCard } from '@components'
 import { useGetTopChartsQuery } from '@redux/services/shazamCore'
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 console.log('genres:', genres)
-
-const isFetchBaseQueryErrorType = (error: any): error is FetchBaseQueryError => 'status' in error
 
 const Discover = () => {
   const { data, isFetching, error } = useGetTopChartsQuery()
@@ -14,7 +11,7 @@ const Discover = () => {
 
   if (isFetching) return <Loader title='Loading songs...' />
 
-  if (isFetchBaseQueryErrorType(error)) return <Error message={error?.data?.message} />
+  if (error) return <Error message={error?.data?.message} />
 
   return (
     <div className='flex flex-col'>
