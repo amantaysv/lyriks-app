@@ -7,7 +7,7 @@ interface ControlsProps {
   setRepeat: (value: (prev: boolean) => boolean) => void
   shuffle: boolean
   setShuffle: (value: (prev: boolean) => boolean) => void
-  currentSongs: []
+  currentSongs: any[]
   handlePlayPause: () => void
   handlePrevSong: () => void
   handleNextSong: () => void
