@@ -11,7 +11,9 @@ const Discover = () => {
 
   if (isFetching) return <Loader title='Loading songs...' />
 
-  if (error) return <Error message={error?.data?.message} />
+  if (error && 'status' in error) {
+    return <Error message={error?.data?.message} />
+  }
 
   return (
     <div className='flex flex-col'>
