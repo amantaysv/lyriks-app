@@ -1,10 +1,13 @@
 import { genres } from '@assets'
 import { Error, Loader, SongCard } from '@components'
+import { useAppSelector } from '@hooks'
 import { useGetTopChartsQuery } from '@redux/services/shazamCore'
 console.log('genres:', genres)
 
 const Discover = () => {
   const { data, isFetching, error } = useGetTopChartsQuery()
+  const { activeSong } = useAppSelector((state) => state.player)
+
   console.log('Discover ~ error:', error)
   console.log('Discover ~ isFetching:', isFetching)
   console.log('Discover ~ data:', data)
@@ -28,8 +31,8 @@ const Discover = () => {
         </select>
       </div>
       <div className='flex flex-wrap sm:justify-start justify-center gap-8'>
-        {new Array(10).fill(null).map((_, index) => (
-          <SongCard key={index} />
+        {data?.map((song, index) => (
+          <SongCard key={song.key} song={song} i={index} activeSong={activeSong} data={data} />
         ))}
       </div>
     </div>

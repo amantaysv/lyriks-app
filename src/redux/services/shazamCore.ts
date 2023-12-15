@@ -1,4 +1,5 @@
 import { BaseQueryFn, FetchArgs, createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { SongData } from 'interfaces'
 
 interface CustomError {
   status: number
@@ -12,13 +13,13 @@ export const shazamCoreApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://shazam-core.p.rapidapi.com/v1',
     prepareHeaders: (headers) => {
-      headers.set('X-RapidAPI-Key', '!f14aba9c57msh3f2be5027e9273ep116f33jsn54a3146508c0')
+      headers.set('X-RapidAPI-Key', 'f14aba9c57msh3f2be5027e9273ep116f33jsn54a3146508c0')
 
       return headers
     },
   }) as BaseQueryFn<string | FetchArgs, unknown, CustomError>,
   endpoints: (builder) => ({
-    getTopCharts: builder.query<any, void>({
+    getTopCharts: builder.query<SongData[], void>({
       query: () => `charts/world`,
     }),
   }),
